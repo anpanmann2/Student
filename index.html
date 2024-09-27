@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="ja">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>出席管理システム</title>
+    <script>
+
+        function showClock() {
+            let nowTime = new Date();
+            let nowHour = nowTime.getHours();
+            let nowMin = nowTime.getMinutes();
+            let nowSec = nowTime.getSeconds();
+            let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
+            document.getElementById("realtime").innerHTML = msg;
+        }
+        setInterval('showClock()', 1000);
+    </script>
+
+    <link rel="stylesheet" href="app.css">
+
+</head>
+
+<body>
+    <div>
+        <h1>出席管理</h1>
+        <p id="realtime"></p>
+    </div>
+    <form id="attendanceForm">
+        <label for="studentId">学籍番号を入力してください:</label>
+        <input type="number" id="studentId" placeholder="学籍番号" required>
+        <button type="submit">出席を記録</button>
+    </form>
+
+    <button id="startScanner">バーコードをスキャン</button>
+
+    <div id="main-container">
+        <!-- カメラ部分 -->
+        <div id="scanner-container">
+            <!-- Quagga.jsがここにカメラフィードを表示します -->
+        </div>
+
+        <!-- 出席リスト部分 -->
+        <div id="attendance-section">
+            <p>読み取ったバーコード: <span id="barcodeValue"></span></p>
+            <h2>出席一覧</h2>
+            <ul id="attendanceList"></ul>
+        </div>
+    </div>
+
+    <!-- QuaggaJSライブラリの読み込み -->
+    <script src="https://cdn.jsdelivr.net/npm/quagga@0.12.1/dist/quagga.min.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
