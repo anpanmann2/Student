@@ -6,16 +6,27 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>出席管理システム</title>
     <script>
-
         function showClock() {
             let nowTime = new Date();
-            let nowHour = nowTime.getHours();
-            let nowMin = nowTime.getMinutes();
-            let nowSec = nowTime.getSeconds();
+            let nowHour = twoFormat(nowTime.getHours());
+            let nowMin = twoFormat(nowTime.getMinutes());
+            let nowSec = twoFormat(nowTime.getSeconds());
+
+
             let msg = "現在時刻：" + nowHour + ":" + nowMin + ":" + nowSec;
             document.getElementById("realtime").innerHTML = msg;
         }
         setInterval('showClock()', 1000);
+        function twoFormat(data) {
+            let number;
+            if (data < 10) {
+                number = "0" + data;
+            }
+            else {
+                number = data;
+            }
+            return number;
+        }
     </script>
 
     <link rel="stylesheet" href="app.css">

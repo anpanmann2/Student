@@ -60,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
                     bottom: "0%" // 下端
                 }
             },
+            frequency: 1,
             decoder: {
                 readers: ["code_128_reader", "ean_reader", "upc_reader"] // 複数のリーダーを指定
             }
